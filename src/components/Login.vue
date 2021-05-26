@@ -66,4 +66,9 @@ button {
   text-align: center;
   transition: all 0.2s;
 }
+
+button:hover {
+  color: #f17f99;
+  background-color: #fff;
+}
 </style>
