@@ -4,6 +4,11 @@
       <img alt="Calendar logo" src="../assets/calendar.png" />
     </header>
     <section>
+        <h3>
+            Finding friend availabilty made easy
+        </h3>
+    </section>
+    <section>
       <button v-on:click="login">Log in</button>
     </section>
     <section>
@@ -30,45 +35,57 @@ export default {
 </script>
 
 <style>
-* {
-  box-sizing: border-box;
-}
+    * {
+        box-sizing: border-box;
+    }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #666;
-}
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #666;
+    }
 
-/* Style the header */
-header {
-  background-color: #666;
-  padding: 5px;
-  text-align: center;
-  font-size: 35px;
-  color: white;
-}
+    /* Style the header */
+    header {
+        background-color: #666;
+        text-align: center;
+        font-size: 35px;
+        color: white;
+    }
 
-section {
-  padding: 10px;
-}
+    section {
+        padding: 10px;
+    }
 
-button {
-  display: inline-block;
-  padding: 0.3em 1.2em;
-  margin: 0 0.3em 0.3em 0;
-  border-radius: 2em;
-  box-sizing: border-box;
-  text-decoration: none;
-  font-family: "Roboto", sans-serif;
-  font-weight: 300;
-  color: #ffffff;
-  background-color: #f17f99;
-  text-align: center;
-  transition: all 0.2s;
-}
+    h3 {
+        display: inline-block;
+        margin-top: 0;
+        padding: 0px 0px 40px 0px;
+        font-family: "Courier New", monospace, sans-serif;
+        font-weight: 550;
+        font-size: 35px;
+        color: #ffffff;
+        text-align: center;
+    }
 
-button:hover {
-  color: #f17f99;
-  background-color: #fff;
-}
+    button {
+        display: inline-block;
+        padding: 0.35em 1.2em;
+        border: 0.1em solid #ffffff;
+        margin: 0 0.3em 0.3em 0;
+        border-radius: 0.12em;
+        box-sizing: border-box;
+        text-decoration: none;
+        font-family: "Courier New", monospace, sans-serif;
+        font-weight: 400;
+        font-size: 25px;
+        color: #ffffff;
+        background-color: #f17f99;
+        text-align: center;
+        transition: all 0.2s;
+    }
+
+    button:hover {
+        color: #f17f99;
+        background-color: #fff;
+    }
 </style>
