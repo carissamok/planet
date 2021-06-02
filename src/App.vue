@@ -5,6 +5,13 @@
 <script>
 import Login from './components/Login.vue'
 
+// an addition from backend!
+import config from "./firebase/config.js"
+import signup from "./firebase/users.js"
+
+config()
+signup()
+
 export default {
   name: 'App',
   components: {
