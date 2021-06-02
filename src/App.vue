@@ -2,8 +2,9 @@
   <!--Potentially move this stuff to dashboard.vue, replace below with just <Dashboard />-->
   <div id="nav">
       <router-link to="/">Login</router-link> |
-      <router-link to="/about">About</router-link>
-      <router-link to="/home">Home</router-link>
+      <router-link to="/about">About</router-link> |
+      <router-link to="/home">Home</router-link> |
+      <router-link to="/calendar">Calendar</router-link>
   </div>
   <router-view />
 </template>
