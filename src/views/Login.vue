@@ -14,7 +14,9 @@
     <section>
       <button v-on:click="google">Sign up with Google</button>
     </section>
-
+    <section>
+      <router-link to="/dashboard">Navigate to Dashboard</router-link>
+    </section>
     <footer></footer>
   </div>
 </template>
