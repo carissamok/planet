@@ -20,14 +20,29 @@
 </template>
 
 <script>
+import {googleSignin, isNewUser} from '../../src/firebase/users.js'
+
 // import { defineComponent } from '@vue/composition-api'
 export default {
   name: "Login",
   methods: {
     login() {
+      googleSignin()
+      if(isNewUser()) {
+        //onboarding
+      } else {
+        //go to homepage
+      }
       console.log("login was pressed");
+
     },
     google() {
+      googleSignin()
+      if(isNewUser()) {
+        //onboarding
+      } else {
+        //homepage
+      }
       console.log("google was pressed");
     },
   },
