@@ -2,25 +2,6 @@ import * as firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 
-// // Allows users to sign up using the Google popup
-// function signup(email, password) { 
-//     firebase.auth().createUserWithEmailAndPassword(email, password)
-//     .then((userCredential) => {
-//         // Signed in 
-//         var user = userCredential.user;
-//         firebase.firestore().collection("users").add({
-//             email: user.email,
-//             password: user.password
-//         })
-//     })
-//     .catch((error) => {
-//         var errorCode = error.code;
-//         var errorMessage = error.message;
-//         // ..
-//         console.log(errorCode, errorMessage);
-//     });
-// }
-
 // Allows users to log in using the Google popup
 function login() {
     // Sign in Firebase using popup auth and Google as the identity provider.
