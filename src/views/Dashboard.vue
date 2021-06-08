@@ -1,22 +1,25 @@
 <template>
-    <div class="hello">
-        <h1>{{ msg }}</h1>
+    <div >
+        <Navbar />
+        <TimePrefHeader />
     </div>
 </template>
 
 <script>
+import TimePrefHeader from '../components/TimePrefHeader.vue'
+import Navbar from '../components/Navbar.vue'
+
     export default {
-        name: 'Page2',
-        data () {
-            return {
-                msg: 'Hey Nic Raboy'
-            }
-        }
+        components: { 
+            Navbar,
+            TimePrefHeader 
+        },
+        name: 'Dashboard'
     }
 </script>
 
 <style scoped>
-    h1, h2 {
+    /* h1, h2 {
         font-weight: normal;
     }
 
@@ -32,5 +35,6 @@
 
     a {
         color: #42b983;
-    }
+    } */
+
 </style>
