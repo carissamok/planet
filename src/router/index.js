@@ -3,6 +3,7 @@ import Home from "@/views/Home.vue";
 import About from "@/views/About.vue";
 import Login from "@/views/Login.vue";
 import Dashboard from "@/views/Dashboard.vue";
+import CalendarMonth from "@/views/CalendarMonth.vue";
 
 const routes = [
   {
@@ -24,7 +25,12 @@ const routes = [
     path: "/dashboard",
     name: "Dashboard",
     component: Dashboard
-  }
+  },
+  {
+    path: "/calendar",
+    name: "Calendar",
+    component: CalendarMonth,
+  },
 ];
 
 const router = createRouter({
