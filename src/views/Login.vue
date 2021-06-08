@@ -17,6 +17,9 @@
     <section>
       <router-link to="/dashboard">Navigate to Dashboard</router-link>
     </section>
+    <section>
+      <router-link to="/when2meet">Navigate to When2Meet</router-link>
+    </section>
     <footer></footer>
   </div>
 </template>
