@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: "Navbar",
+  name: "SubNavbar",
   methods: {
     your_events() {
       console.log("your events was pressed");

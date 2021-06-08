@@ -3,6 +3,8 @@ import Home from "@/views/Home.vue";
 import About from "@/views/About.vue";
 import Login from "@/views/Login.vue";
 import Dashboard from "@/views/Dashboard.vue";
+import Settings from "@/views/Settings.vue";
+import TimePreferences from "@/views/TimePreferences.vue"
 import CalendarMonth from "@/views/CalendarMonth.vue";
 
 const routes = [
@@ -25,6 +27,16 @@ const routes = [
     path: "/dashboard",
     name: "Dashboard",
     component: Dashboard
+  },
+  {
+    path: "/settings",
+    name: "Settings",
+    component: Settings
+  },
+  {
+    path: "/timepreferences",
+    name: "Time Preferences",
+    component: TimePreferences
   },
   {
     path: "/calendar",

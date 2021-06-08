@@ -1,18 +1,18 @@
 <template>
     <div >
         <Navbar />
-        <TimePrefHeader />
+        <SubNavbar />
     </div>
 </template>
 
 <script>
-import TimePrefHeader from '../components/TimePrefHeader.vue'
+import SubNavbar from '../components/SubNavbar.vue'
 import Navbar from '../components/Navbar.vue'
 
     export default {
         components: { 
             Navbar,
-            TimePrefHeader 
+            SubNavbar 
         },
         name: 'Dashboard'
     }
