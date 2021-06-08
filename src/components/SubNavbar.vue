@@ -3,11 +3,9 @@
   <div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarColor03">
-            <button class="nav-item" v-on:click="your_events">Your events</button>
-            <button class="nav-item" v-on:click="your_socal">Your Socal</button>
-            <button class="nav-item" v-on:click="w2m">When2Meet</button>
-        </div>
+            <router-link to="/dashboard" tag="button">Your events</router-link> | <!-- dashboard -->
+            <router-link to="/yoursocal" tag="button">Your Socal</router-link> |
+            <router-link to="/when2meet" tag="button">When2Meet</router-link> |
       </div>
     </nav>
   </div>

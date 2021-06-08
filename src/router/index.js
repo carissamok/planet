@@ -5,6 +5,8 @@ import Login from "@/views/Login.vue";
 import Dashboard from "@/views/Dashboard.vue";
 import Settings from "@/views/Settings.vue";
 import TimePreferences from "@/views/TimePreferences.vue"
+import When2Meet from "@/views/When2Meet.vue"
+import YourSocal from "@/views/YourSocal.vue"
 
 const routes = [
   {
@@ -36,6 +38,16 @@ const routes = [
     path: "/timepreferences",
     name: "TimePreferences",
     component: TimePreferences
+  },
+  {
+    path: "/when2meet",
+    name: "When2Meet",
+    component: When2Meet
+  },
+  {
+    path: "/yoursocal",
+    name: "YourSocal",
+    component: YourSocal
   },
 ];
 
