@@ -5,6 +5,7 @@ import Login from "@/views/Login.vue";
 import Dashboard from "@/views/Dashboard.vue";
 import Settings from "@/views/Settings.vue";
 import TimePreferences from "@/views/TimePreferences.vue"
+import When2Meet from "@/views/When2Meet.vue"
 
 const routes = [
   {
@@ -37,6 +38,11 @@ const routes = [
     name: "TimePreferences",
     component: TimePreferences
   },
+  {
+    path: "/when2meet",
+    name: "When2Meet",
+    component: When2Meet
+  }
 ];
 
 const router = createRouter({
