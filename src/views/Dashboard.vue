@@ -2,17 +2,20 @@
     <div >
         <Navbar />
         <SubNavbar />
+        <Calendar-Month />
     </div>
 </template>
 
 <script>
 import SubNavbar from '../components/SubNavbar.vue'
 import Navbar from '../components/Navbar.vue'
+import CalendarMonth from '../components/calendar/CalendarMonth.vue'
 
     export default {
         components: { 
             Navbar,
-            SubNavbar 
+            SubNavbar,
+            CalendarMonth
         },
         name: 'Dashboard'
     }

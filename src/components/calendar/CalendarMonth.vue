@@ -30,10 +30,10 @@
 import dayjs from "dayjs";
 import weekday from "dayjs/plugin/weekday";
 import weekOfYear from "dayjs/plugin/weekOfYear";
-import CalendarDateIndicator from "../components/calendar/CalendarDateIndicator";
-import CalendarDateSelector from "../components/calendar/CalendarDateSelector";
-import CalendarMonthDayItem from "../components/calendar/CalendarMonthDayItem";
-import CalendarWeekdays from "../components/calendar/CalendarWeekdays";
+import CalendarDateIndicator from "./CalendarDateIndicator";
+import CalendarDateSelector from "./CalendarDateSelector";
+import CalendarMonthDayItem from "./CalendarMonthDayItem";
+import CalendarWeekdays from "./CalendarWeekdays";
 
 dayjs.extend(weekday);
 dayjs.extend(weekOfYear);

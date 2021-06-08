@@ -5,7 +5,6 @@ import Login from "@/views/Login.vue";
 import Dashboard from "@/views/Dashboard.vue";
 import Settings from "@/views/Settings.vue";
 import TimePreferences from "@/views/TimePreferences.vue"
-import CalendarMonth from "@/views/CalendarMonth.vue";
 
 const routes = [
   {
@@ -35,13 +34,8 @@ const routes = [
   },
   {
     path: "/timepreferences",
-    name: "Time Preferences",
+    name: "TimePreferences",
     component: TimePreferences
-  },
-  {
-    path: "/calendar",
-    name: "Calendar",
-    component: CalendarMonth,
   },
 ];
 
