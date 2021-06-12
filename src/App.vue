@@ -1,20 +1,22 @@
 <template>
-  <Login/>
+  <Login />
 </template>
 
 <script>
-import Login from './components/Login.vue'
+import Login from "./components/Login.vue";
 
 // an addition from backend!
-import config from './firebase/config.js'
-config()
+import config from "./firebase/config.js";
+config();
+
+//
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Login
-  }
-}
+    Login,
+  },
+};
 </script>
 
 <style>
