@@ -1,17 +1,27 @@
 <!-- overall navbar at the top of every page-->
 <template>
   <div id="nav">
-    <header>
+    <!-- <header> -->
+      <nav id="header">
       <!-- <router-link to="/">Login</router-link> | -->
-      <router-link to="/home">Home</router-link> | 
+      <router-link to="/dashboard">Dashboard</router-link> | 
       <router-link to="/timepreferences">Time Preferences</router-link> | 
       <router-link to="/settings">Settings</router-link>
-    </header>
+      <!--
+        <nav id="header">
+  <div class="home-header">
+    <a href="#"><h1> testing this </h1></a>
+  </div>
+</nav>
+        -->
+    </nav>
+    <!-- </header> -->
   </div>
   <router-view />
 </template>
 
 <script>
+
 export default {
   name: "Navbar",
 };
@@ -21,11 +31,21 @@ export default {
 
   * {
     box-sizing: border-box;
+    margin: 0px;
   }
 
-  header {
+  div {
+    margin: 0px;
+    padding: 0px;
+  }
+
+  nav {
     background-color: #fff;
-    /* margin-top: 0px; */
+    margin: 0px;
+  }
+
+  body {
+    margin: 0px;
   }
 
   router-link {
