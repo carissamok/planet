@@ -9,12 +9,17 @@
         </h3>
     </section>
     <section>
-      <button v-on:click="login">Log in</button>
+      <button class="login" v-on:click="login">Log in</button>
     </section>
     <section>
-      <button v-on:click="google">Sign up with Google</button>
+      <button class="login" v-on:click="google">Sign up with Google</button>
     </section>
-
+    <section>
+      <router-link to="/dashboard">Navigate to Dashboard</router-link>
+    </section>
+    <section>
+      <router-link to="/when2meet">Navigate to When2Meet</router-link>
+    </section>
     <footer></footer>
   </div>
 </template>
@@ -67,7 +72,7 @@ export default {
         text-align: center;
     }
 
-    button {
+    .login button {
         display: inline-block;
         padding: 0.35em 1.2em;
         border: 0.1em solid #ffffff;
@@ -84,7 +89,7 @@ export default {
         transition: all 0.2s;
     }
 
-    button:hover {
+    .login button:hover {
         color: #f17f99;
         background-color: #fff;
     }
