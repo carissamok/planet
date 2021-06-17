@@ -1,5 +1,7 @@
 <template>
   <div class="generate-time">
+    <input v-model="eventName">
+    <p>Name of Event: {{ eventName }}</p>
     <input v-model="invitees">
     <p>People Invited: {{ invitees }}</p>
     <p>Invites as list: {{ inviteList }}</p>
@@ -19,6 +21,7 @@ export default {
 
     data() {
         return {
+            eventName: "",
             invitees: ""
         }
     },
@@ -31,7 +34,8 @@ export default {
 
     methods: {
         generate() {
-            console.log("Generate")
+            this.$emit("generate", {eventName: this.eventName,
+                                    inviteList: this.inviteList});
         }
     }
 };
