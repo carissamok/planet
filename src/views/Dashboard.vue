@@ -1,5 +1,6 @@
 <template>
     <div >
+        <router-link to="/home">Link to tester navbar</router-link> | 
         <Navbar />
         <SubNavbar />
         <Calendar-Month />
@@ -22,6 +23,10 @@ import CalendarMonth from '../components/calendar/CalendarMonth.vue'
 </script>
 
 <style scoped>
+
+    div {
+        margin: 0px
+    }
     /* h1, h2 {
         font-weight: normal;
     }
