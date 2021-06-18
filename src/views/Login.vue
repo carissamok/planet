@@ -9,12 +9,17 @@
       </h3>
     </section>
     <section>
-      <button v-on:click="login">Log in</button>
+      <button class="login" v-on:click="login">Log in</button>
     </section>
     <section>
-      <button v-on:click="google">Sign up with Google</button>
+      <button class="login" v-on:click="google">Sign up with Google</button>
     </section>
-
+    <section>
+      <router-link to="/dashboard">Navigate to Dashboard</router-link>
+    </section>
+    <section>
+      <router-link to="/when2meet">Navigate to When2Meet</router-link>
+    </section>
     <footer></footer>
   </div>
 </template>
@@ -85,25 +90,25 @@ h3 {
   text-align: center;
 }
 
-button {
-  display: inline-block;
-  padding: 0.35em 1.2em;
-  border: 0.1em solid #ffffff;
-  margin: 0 0.3em 0.3em 0;
-  border-radius: 0.12em;
-  box-sizing: border-box;
-  text-decoration: none;
-  font-family: "Courier New", monospace, sans-serif;
-  font-weight: 400;
-  font-size: 25px;
-  color: #ffffff;
-  background-color: #f17f99;
-  text-align: center;
-  transition: all 0.2s;
-}
+    .login button {
+        display: inline-block;
+        padding: 0.35em 1.2em;
+        border: 0.1em solid #ffffff;
+        margin: 0 0.3em 0.3em 0;
+        border-radius: 0.12em;
+        box-sizing: border-box;
+        text-decoration: none;
+        font-family: "Courier New", monospace, sans-serif;
+        font-weight: 400;
+        font-size: 25px;
+        color: #ffffff;
+        background-color: #f17f99;
+        text-align: center;
+        transition: all 0.2s;
+    }
 
-button:hover {
-  color: #f17f99;
-  background-color: #fff;
-}
+    .login button:hover {
+        color: #f17f99;
+        background-color: #fff;
+    }
 </style>
