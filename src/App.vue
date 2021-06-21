@@ -6,6 +6,9 @@
 <script>
   import config from "./firebase/config.js";
   config();
+  export default {
+  name: 'App'
+}
 </script>
 
 <style>

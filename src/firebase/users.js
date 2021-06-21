@@ -3,15 +3,14 @@ import "firebase/auth";
 import "firebase/firestore";
 
 // Allows users to log in using the Google popup
-async function googleSignin() {
+function googleSignin() {
   // Sign in Firebase using popup auth and Google as the identity provider.
   var provider = new firebase.auth.GoogleAuthProvider();
+  provider.addScope('https://www.googleapis.com/auth/calendar.events')
 
   firebase
     .auth()
     .signInWithPopup(provider)
-    // provider.addScope('https://www.googleapis.com/auth/calendar.events')
-
     .then((result) => {
       var credential = result.credential;
 
@@ -61,7 +60,7 @@ function logout() {
   firebase.auth().signOut();
 }
 
-async function isNewUser() {
+function isNewUser() {
   const user = firebase.auth().currentUser;
   console.log(user.email);
   firebase

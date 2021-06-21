@@ -4,9 +4,7 @@
       <img alt="Calendar logo" src="../assets/calendar.png" />
     </header>
     <section>
-      <h3>
-        Finding friend availabilty made easy
-      </h3>
+      <h3>Finding friend availabilty made easy</h3>
     </section>
     <section>
       <button class="login" v-on:click="login">Log in</button>
@@ -25,32 +23,18 @@
 </template>
 
 <script>
-import { googleSignin, isNewUser } from "../../src/firebase/users.js";
+import { googleSignin } from "../../src/firebase/users.js";
 
 // import { defineComponent } from '@vue/composition-api'
 export default {
   name: "Login",
   methods: {
     login() {
-      googleSignin().then(() => {
-        if (isNewUser()) {
-          //onboarding
-          console.log("onboarding");
-        } else {
-          //go to homepage
-          console.log("homepage");
-        }
-      });
-
+      googleSignin()
       console.log("login was pressed");
     },
     google() {
       googleSignin();
-      if (isNewUser()) {
-        //onboarding
-      } else {
-        //homepage
-      }
       console.log("google was pressed");
     },
   },
@@ -90,25 +74,25 @@ h3 {
   text-align: center;
 }
 
-    .login button {
-        display: inline-block;
-        padding: 0.35em 1.2em;
-        border: 0.1em solid #ffffff;
-        margin: 0 0.3em 0.3em 0;
-        border-radius: 0.12em;
-        box-sizing: border-box;
-        text-decoration: none;
-        font-family: "Courier New", monospace, sans-serif;
-        font-weight: 400;
-        font-size: 25px;
-        color: #ffffff;
-        background-color: #f17f99;
-        text-align: center;
-        transition: all 0.2s;
-    }
+.login button {
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  border: 0.1em solid #ffffff;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Courier New", monospace, sans-serif;
+  font-weight: 400;
+  font-size: 25px;
+  color: #ffffff;
+  background-color: #f17f99;
+  text-align: center;
+  transition: all 0.2s;
+}
 
-    .login button:hover {
-        color: #f17f99;
-        background-color: #fff;
-    }
+.login button:hover {
+  color: #f17f99;
+  background-color: #fff;
+}
 </style>
