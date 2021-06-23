@@ -10,15 +10,19 @@
 import SubNavbar from '../components/SubNavbar.vue'
 import Navbar from '../components/Navbar.vue'
 import CalendarMonth from '../components/calendar/CalendarMonth.vue'
+import addGCalEvents from '../firebase/googleCalendar.js'
 
-    export default {
-        components: { 
-            Navbar,
-            SubNavbar,
-            CalendarMonth
-        },
-        name: 'Dashboard'
+export default {
+    components: { 
+        Navbar,
+        SubNavbar,
+        CalendarMonth
+    },
+    name: 'Dashboard',
+    beforeMount() {
+        addGCalEvents()
     }
+}
 </script>
 
 <style scoped>

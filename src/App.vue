@@ -3,6 +3,14 @@
   <router-view />
 </template>
 
+<script>
+  import config from "./firebase/config.js";
+  config();
+  export default {
+  name: 'App'
+}
+</script>
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
