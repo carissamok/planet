@@ -33,29 +33,34 @@ function deleteEvent(userEmail, eventId) {
     firebase.firestore().collection('users').doc(userEmail).collection('events').doc(eventId).delete();
 }
 
-function upcomingEvents(start=Date.now(), end) {
-    const user = firebase.auth().currentUser;
-    const events = user.events
+function upcomingEvents() {
+    const userEmail = firebase.auth().currentUser.email;
+    console.log(userEmail);
+    const events = firebase.firestore().collection('users').doc(userEmail).collection('events');
     var displayEvents = []
 
-    events.forEach((event) => {
-        if(event.compareTo(start) > 0 && event.compareTo(end) < 0) {
-            const startTime = event.timeSlot.startTime.toString()
-            const endTime = event.timeSlot.endTime.toString()
+    // can use .where to check for certain times
+    events.get().then((responses) => {
+        responses.forEach((response) => {
+            const event = response.data();
+            const startTime = event.startTime.toString()
+            const endTime = event.endTime.toString()
 
-            const users = event.users
+            /*const users = event.users
             var usernames = []
-            users.forEach((user) => usernames.push(user.username))
+            users.forEach((user) => usernames.push(user.username))*/
 
-            displayEvents.push({"startTime": startTime, "endTime": endTime, 
-                "title": event.name, "description": event.description, "users": usernames})
-        }
+            displayEvents.push({
+                "startTime": startTime, "endTime": endTime,
+                "title": event.name, "description": event.description, "users": event.users
+            })
+        })
+
     })
-
     return displayEvents
 }
 
 
 
-export { createEvent, deleteEvent, editEvent, displayEvents };
+export { createEvent, deleteEvent, editEvent, upcomingEvents };
 // export default logout;
