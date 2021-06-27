@@ -11,6 +11,7 @@ import SubNavbar from "../components/SubNavbar.vue";
 import Navbar from "../components/Navbar.vue";
 import CalendarMonth from "../components/calendar/CalendarMonth.vue";
 import addGCalEvents from "../firebase/googleCalendar.js";
+import displayEvents from "../firebase/events.js"
 
 export default {
   components: {
@@ -21,6 +22,7 @@ export default {
   name: "Dashboard",
   beforeMount() {
     addGCalEvents();
+    displayEvents();
   },
 };
 </script>
