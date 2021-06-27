@@ -30,8 +30,7 @@ export default {
   name: "Login",
   methods: {
     login() {
-      googleSignin()
-      console.log("login was pressed");
+      googleSignin();
     },
     google() {
       googleSignin();
