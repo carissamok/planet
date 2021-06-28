@@ -26,6 +26,10 @@ export default {
 </script>
 
 <style scoped>
+
+    div {
+        margin: 0px
+    }
     /* h1, h2 {
         font-weight: normal;
     }
