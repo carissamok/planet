@@ -21,7 +21,7 @@ const routes = [
   },
   {
     path: "/home",
-    name: "Home",
+    name: "Linktotesternav",
     component: Home,
   },
   {
