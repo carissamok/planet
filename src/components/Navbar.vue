@@ -1,11 +1,13 @@
 <!-- overall navbar at the top of every page-->
 <template>
-  <div id="header">
-      <img alt="Calendar logo" src="../assets/calendar.png" />
-    <div id="nav"> 
+  <div>
+    <!-- <header style="display: inline-block; text-align: left; width: 100%;"> -->
+      <img alt="Calendar logo" src="../assets/calendar.png" style="width:3em; height:3em;" />
+    <!-- </header> -->
+    <div id="nav" style="display: inline-block; text-align: right; width: 100%">
       <nav id="header">
-        <router-link to="/dashboard">Dashboard</router-link> | 
-        <router-link to="/timepreferences">Time Preferences</router-link> | 
+        <router-link to="/dashboard">Dashboard</router-link> |
+        <router-link to="/timepreferences">Time Preferences</router-link> |
         <router-link to="/settings">Settings</router-link>
       </nav>
     </div>
@@ -39,15 +41,10 @@ body {
   margin: 0px;
 }
 
-img {
-  width: 4em; 
-  height: 4em;
-} 
-
-#header {
-  display: flex; 
-  justify-content: space-between;
-  align-items: center;
+.img {
+  display: inline-block; 
+  text-align: left; 
+  width: 100%;
 }
 
 router-link {
