@@ -5,7 +5,7 @@
     </header>
     <section>
         <h3>
-            Finding friend availabilty made easy
+            Finding friend availability made easy
         </h3>
     </section>
     <section>

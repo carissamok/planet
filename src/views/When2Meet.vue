@@ -1,7 +1,8 @@
 <template>
-    <div >
+    <div>
         <Navbar />
         <SubNavbar />
+        <div  class="background">
         <GenerateTime @generate=generateTimes> </GenerateTime>
         <!-- TODO: add transitions/fading ? -->
         <ul id="array-rendering">
@@ -11,6 +12,7 @@
             </button>
         </ul>
         <button class="rsvp" v-on:click="sendRsvp">Send RSVP</button>
+        </div>
     </div>
 </template>
 
@@ -98,6 +100,11 @@ import GenerateTime from '../components/when2meet/GenerateTime.vue'
     .fade-enter-from, .fade-leave-to {
         opacity: 0;
     } */
+
+    .background {
+        background-color: #fefdf0
+    }
+
     .time {
         display: inline-block;
         padding: 0.35em 1.2em;
@@ -108,7 +115,7 @@ import GenerateTime from '../components/when2meet/GenerateTime.vue'
         text-decoration: none;
         font-family: "Courier New", monospace, sans-serif;
         font-weight: 400;
-        font-size: 25px;
+        font-size: 15px;
         color: #ffffff;
         background-color: #f17f99;
         text-align: center;
