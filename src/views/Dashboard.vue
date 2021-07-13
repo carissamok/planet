@@ -22,7 +22,7 @@ export default {
   name: "Dashboard",
   beforeMount() {
     addGCalEvents();
-    upcomingEvents();
+    upcomingEvents().then(events => console.log(events[0]))
   },
 };
 </script>

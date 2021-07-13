@@ -35,29 +35,29 @@ function deleteEvent(userEmail, eventId) {
 
 function upcomingEvents() {
     const userEmail = firebase.auth().currentUser.email;
-    console.log(userEmail);
     const events = firebase.firestore().collection('users').doc(userEmail).collection('events');
     var displayEvents = []
 
     // can use .where to check for certain times
-    events.get().then((responses) => {
-        responses.forEach((response) => {
-            const event = response.data();
-            const startTime = event.startTime.toString()
-            const endTime = event.endTime.toString()
+    return new Promise(function(resolve) {
+        events.get().then((responses) => {
+            responses.forEach((response) => {
+                const event = response.data();
+                const startTime = event.startTime.toString()
+                const endTime = event.endTime.toString()
 
-            /*const users = event.users
-            var usernames = []
-            users.forEach((user) => usernames.push(user.username))*/
-
-            displayEvents.push({
-                "startTime": startTime, "endTime": endTime,
-                "title": event.name, "description": event.description, "users": event.users
+                /*const users = event.users
+                var usernames = []
+                users.forEach((user) => usernames.push(user.username))*/
+                displayEvents.push({
+                    "startTime": startTime, "endTime": endTime,
+                    "title": event.name, "description": event.description, "users": event.users
+                })
             })
+            resolve(displayEvents)
         })
-
     })
-    return displayEvents
+
 }
 
 
