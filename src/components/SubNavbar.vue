@@ -2,9 +2,9 @@
 <template>
   <div id="subnav">
     <nav >
-            <router-link to="/dashboard" tag="button">Your events</router-link> | <!-- dashboard -->
-            <router-link to="/yoursocal" tag="button">Your Socal</router-link> |
-            <router-link to="/when2meet" tag="button">When2Meet</router-link> |
+            <router-link to="/home" tag="button">Your events</router-link> | <!-- dashboard -->
+            <!-- <router-link to="/yoursocal" tag="button">Your Socal</router-link> | -->
+            <router-link to="/timematch" tag="button">Time Match</router-link> 
     </nav>
   </div>
 </template>
@@ -30,7 +30,7 @@ export default {
 
   * {
     box-sizing: border-box;
-    margin: 0px;
+    margin: 20px 5px 20px 5px;
   }
 
   router-link {

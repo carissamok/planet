@@ -4,7 +4,9 @@
       <img alt="Calendar logo" src="../assets/calendar.png" />
     </header>
     <section>
-      <h3>Finding friend availabilty made easy</h3>
+        <h3>
+            Finding friend availability made easy
+        </h3>
     </section>
     <section>
       <button class="login" v-on:click="login">Log in</button>
@@ -13,10 +15,10 @@
       <button class="login" v-on:click="google">Sign up with Google</button>
     </section>
     <section>
-      <router-link to="/dashboard">Navigate to Dashboard</router-link>
+      <router-link to="/home">Navigate to Home</router-link>
     </section>
     <section>
-      <router-link to="/when2meet">Navigate to When2Meet</router-link>
+      <router-link to="/timematch">Navigate to When2Meet</router-link>
     </section>
     <footer></footer>
   </div>
