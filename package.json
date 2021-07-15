@@ -9,9 +9,15 @@
     "dev": "cross-env NODE_ENV=development vue-cli-service serve --open --host localhost"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "dayjs": "^1.10.5",
+    "firebase": "^7.24.0",
+    "gapi-script": "^1.2.0",
+    "modal": "^1.2.0",
+    "save": "^2.4.0",
     "vue": "^3.0.0",
+    "vue-gapi": "^1.1.0",
     "vue-router": "^4.0.8"
   },
   "devDependencies": {

@@ -19,59 +19,73 @@
     </div>
 </template>
 
+
 <script>
-import SubNavbar from '../components/SubNavbar.vue'
-import Navbar from '../components/Navbar.vue'
-import GenerateTime from '../components/when2meet/GenerateTime.vue'
+import SubNavbar from "../components/SubNavbar.vue";
+import Navbar from "../components/Navbar.vue";
+import GenerateTime from "../components/when2meet/GenerateTime.vue";
+import CreateEvent from "../components/modals/CreateEvent.vue";
+import EventDetails from "../components/modals/EventDetails.vue";
+import ShareTimes from "../components/modals/ShareTimes.vue";
 
-    export default {
-        components: { 
-            Navbar,
-            SubNavbar,
-            GenerateTime
-        },
-        data() {
-            return {
-                generatedTimes: [],
-                selectedButton: [true, false, false]
-            }
-        },
-        name: 'When2Meet',
-        methods: {
-            generateTimes(eventDetails){
-                // Call backend function to generate invites here ?
-                console.log(eventDetails["eventName"])
-                console.log(eventDetails["inviteList"])
+export default {
+  components: {
+    Navbar,
+    SubNavbar,
+    GenerateTime,
+    CreateEvent,
+    EventDetails,
+    ShareTimes,
+  },
+  data() {
+    return {
+      generatedTimes: [],
+      selectedButton: [true, false, false],
+      isModalVisible: false,
+    };
+  },
+  name: "When2Meet",
+  methods: {
+    generateTimes(eventDetails) {
+      // Call backend function to generate invites here ?
+      console.log(eventDetails["eventName"]);
+      console.log(eventDetails["inviteList"]);
 
-                // Format of object returned from backend function ?
-                // Just putting in dummy data for now
-                this.generatedTimes = [
-                    {
-                        date: "1-1-21",
-                        time: "3:00pm"
-                    },
-                    {
-                        date: "1-1-21",
-                        time: "3:00pm"
-                    },
-                    {
-                        date: "1-1-21",
-                        time: "3:00pm"
-                    }
-                ]
-            },
-            highlight(index) {
-                this.selectedButton[0] = false
-                this.selectedButton[1] = false
-                this.selectedButton[2] = false
-                this.selectedButton[index] = true
-            },
-            sendRsvp() {
-                // TODO: connect with backend
-                console.log("send rsvp pressed")
-            }
-        }
-    }
+      // Format of object returned from backend function ?
+      // Just putting in dummy data for now
+      this.generatedTimes = [
+        {
+          date: "1-1-21",
+          time: "3:00pm",
+        },
+        {
+          date: "1-1-21",
+          time: "3:00pm",
+        },
+        {
+          date: "1-1-21",
+          time: "3:00pm",
+        },
+      ];
+    },
+    highlight(index) {
+      this.selectedButton[0] = false;
+      this.selectedButton[1] = false;
+      this.selectedButton[2] = false;
+      this.selectedButton[index] = true;
+    },
+    sendRsvp() {
+      // TODO: connect with backend
+      console.log("send rsvp pressed");
+    },
+    showModal() {
+      this.isModalVisible = true;
+    },
+    closeModal() {
+      this.isModalVisible = false;
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -110,8 +124,10 @@ import GenerateTime from '../components/when2meet/GenerateTime.vue'
         text-align: center;
         transition: all 0.2s;
     }
+    
     .time:hover, .time.highlight {
         color: #f17f99;
         background-color: #fff;
     }
+
 </style>
