@@ -15,16 +15,9 @@
       </button>
     </ul>
     <button class="rsvp" v-on:click="sendRsvp">Send RSVP</button>
-
-    <button type="button" class="btn" @click="showModal">Open Modal!</button>
-
-    <Modal v-show="isModalVisible" @close="closeModal">
-      <template v-slot:header> Put whatever you want here </template>
-
-      <template v-slot:body> This is a new modal body. </template>
-
-      <template v-slot:footer> This is a new modal footer. </template>
-    </Modal>
+    <CreateEvent />
+    <EventDetails />
+    <ShareTimes />
   </div>
 </template>
 
@@ -33,14 +26,18 @@
 import SubNavbar from "../components/SubNavbar.vue";
 import Navbar from "../components/Navbar.vue";
 import GenerateTime from "../components/when2meet/GenerateTime.vue";
-import Modal from "../components/Modal.vue";
+import CreateEvent from "../components/modals/CreateEvent.vue";
+import EventDetails from "../components/modals/EventDetails.vue";
+import ShareTimes from "../components/modals/ShareTimes.vue";
 
 export default {
   components: {
     Navbar,
     SubNavbar,
     GenerateTime,
-    Modal,
+    CreateEvent,
+    EventDetails,
+    ShareTimes,
   },
   data() {
     return {
