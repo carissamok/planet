@@ -26,7 +26,7 @@ function load() {
                             'calendarId': 'primary'
                          }).then(
                             function(response) {
-                                gcalToTimePref(response.result.items)
+                                importGcal(response.result.items)
                             },
                             function(err) { 
                                 console.error("Execute error", err); 
@@ -52,23 +52,34 @@ function addGCalEvents() {
     gapi.load('client:auth2', start)
 }
 
-function gcalToTimePref(gcalEvents) {
+function importGcal(gcalEvents) {
     gcalEvents.forEach(event => {
         const userEmail = firebase.auth().currentUser.email;
+        const attendees = []
+        event.attendees.forEach((guest) => {
+            attendees.push(guest.email)
+        })
+        console.log(event)
         if(event.start && event.end && event.start.dateTime) {
-            const timePref = {
-                start: event.start.dateTime,
-                end: event.end.dateTime,
-                type: "not free"
+            const gcal = {
+                start: new Date(event.start.dateTime).toLocaleString(),
+                end: new Date(event.end.dateTime).toLocaleString(),
+                name: event.summary,
+                attendees: attendees
             }
-            firebase.firestore().collection('users').doc(userEmail).collection('timePreferences').add(timePref);
+            firebase.firestore().collection('users').doc(userEmail).collection('googleCal').add(gcal);
         } else if(event.start && event.end) {
-            const timePref = {
-                start: event.start.date,
-                end: event.end.date,
-                type: "not free"
+            const start = new Date(event.start.date)
+            const startDateTime = new Date(start.getFullYear(), start.getMonth(), start.getDate(), 0, 0, 0, 0)
+            const end = new Date(event.end.date)
+            const endDateTime = new Date(end.getFullYear(), end.getMonth(), end.getDate(), 23, 59, 0, 0)
+            const gcal = {
+                start: startDateTime.toLocaleString(),
+                end: endDateTime.toLocaleString(),
+                name: event.summary, 
+                attendees: attendees
             }
-            firebase.firestore().collection('users').doc(userEmail).collection('timePreferences').add(timePref);
+            firebase.firestore().collection('users').doc(userEmail).collection('googleCal').add(gcal);
         }
     })
 }
