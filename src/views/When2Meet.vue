@@ -16,6 +16,9 @@
             <!-- hide button until later -->
             <!-- <button class="rsvp" v-on:click="sendRsvp">Send RSVP</button> -->
         </div>
+        <CreateEvent />
+        <EventDetails />
+        <ShareTimes />
     </div>
 </template>
 
