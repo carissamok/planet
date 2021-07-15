@@ -5,10 +5,17 @@
 
 <script>
   import config from "./firebase/config.js";
-  config();
+
   export default {
-  name: 'App'
-}
+    name: 'App',
+    data() {
+    return {
+      showModal: false
+    }
+  }
+  }
+
+  config();
 </script>
 
 <style>
