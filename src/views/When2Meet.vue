@@ -2,16 +2,19 @@
     <div>
         <Navbar />
         <SubNavbar />
-        <div  class="background">
-        <GenerateTime @generate=generateTimes> </GenerateTime>
-        <!-- TODO: add transitions/fading ? -->
-        <ul id="array-rendering">
-            <button v-for="(time, index) in generatedTimes" v-bind:key="time.id" v-on:click="highlight(index)" 
-                    :class="['time', selectedButton[index] ? 'highlight' : '']">
-                {{time.date}} {{time.time}}
-            </button>
-        </ul>
-        <button class="rsvp" v-on:click="sendRsvp">Send RSVP</button>
+        <div class="timematch-layout">
+            <div class="background">
+                <GenerateTime @generate=generateTimes> </GenerateTime>
+            </div>
+            <!-- TODO: add transitions/fading ? -->
+            <ul id="array-rendering">
+                <button v-for="(time, index) in generatedTimes" v-bind:key="time.id" v-on:click="highlight(index)" 
+                        :class="['time', selectedButton[index] ? 'highlight' : '']">
+                    {{time.date}} {{time.time}}
+                </button>
+            </ul>
+            <!-- hide button until later -->
+            <!-- <button class="rsvp" v-on:click="sendRsvp">Send RSVP</button> -->
         </div>
     </div>
 </template>
@@ -72,37 +75,23 @@ import GenerateTime from '../components/when2meet/GenerateTime.vue'
 </script>
 
 <style scoped>
-    /* h1, h2 {
-        font-weight: normal;
+
+    .timematch-layout {
+        display: flex;
+        flex-direction: row;
+        align-items: left;
+    }
+
+    .background {
+        padding: 50px;
+        background-color: #e3e7fe;
     }
 
     ul {
-        list-style-type: none;
-        padding: 0;
-    }
-
-    li {
-        display: inline-block;
-        margin: 0 10px;
-    }
-
-    a {
-        color: #42b983;
-    } */
-    /* body {
-        margin: 30px;
-    }
-
-    .fade-enter-active, .fade-leave-active {
-        transition: opacity .5s ease;
-    }
-
-    .fade-enter-from, .fade-leave-to {
-        opacity: 0;
-    } */
-
-    .background {
-        background-color: #fefdf0
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
     }
 
     .time {

@@ -1,5 +1,5 @@
 <template>
-    <div >
+    <div>
         <Navbar />
         <SubNavbar />
         <Calendar-Month />
@@ -23,25 +23,15 @@ import CalendarMonth from '../components/calendar/CalendarMonth.vue'
 
 <style scoped>
 
+    Navbar {
+        background-color: #e3e7fe;
+        position: -webkit-sticky;
+        position: sticky;
+    }
+
     div {
         margin: 0px
     }
-    /* h1, h2 {
-        font-weight: normal;
-    }
 
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
-
-    li {
-        display: inline-block;
-        margin: 0 10px;
-    }
-
-    a {
-        color: #42b983;
-    } */
 
 </style>

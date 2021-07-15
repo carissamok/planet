@@ -3,7 +3,8 @@
 <template>
   <div class="generate-time">
       <div class="form-section">
-        <label>Event name: {{ eventName }}</label>
+        <!-- <label>Event name: {{ eventName }}</label> -->
+        <label>Event name: </label>
         <input type="text" v-model="eventName">
       </div>
       <div class="form-section">
@@ -58,16 +59,19 @@ export default {
 
     /* why is this like not rendering --> user agent stylesheet is overriding?? */
     input {
+        margin: 0px 0px 20px;
         border: none;
         border-bottom: 2px #f17f99;
+        /* resize: none; */
     }
 
     input[type=text]:focus {
-        border: 3px solid #555;
+        /* border: 3px solid #555; */
+        width: 100%;
     }
 
     label {
-        margin: 20px 0px 0px;
+        /* margin: 0px 0px 20px; */
         display: block;
         position: relative;
         /* color: #c5a8a8 */
@@ -87,7 +91,7 @@ export default {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        justify-content: center;
+        /* justify-content: center; */
     }
 
     button.generate {
@@ -108,8 +112,7 @@ export default {
     }
 
     button.generate:hover {
-        color: #f17f99;
-        background-color: #fff;
+        border-color: #000000;
     }
 
 </style>
