@@ -161,7 +161,6 @@ export default {
 .calendar-month {
   position: relative;
   background-color: var(--grey-200);
-  border: solid 1px rgb(221, 126, 126);
 }
 
 .day-of-week {
