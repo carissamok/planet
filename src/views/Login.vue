@@ -4,7 +4,7 @@
       <img alt="Calendar logo" src="../assets/calendar.png" />
     </header>
     <section>
-      <h3>Finding friend availabilty made easy</h3>
+      <h3>Finding friend availability made easy</h3>
     </section>
     <section>
       <button class="login" v-on:click="login">Log in</button>
@@ -24,13 +24,35 @@
 
 <script>
 import { googleSignin } from "../../src/firebase/users.js";
+import "../../src/router/index.js";
+import * as firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/firestore";
 
 // import { defineComponent } from '@vue/composition-api'
 export default {
+  beforeMount() {
+    var router = this.$router;
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        console.log("logged in");
+        console.log(user);
+        router.push({ path: "/dashboard" });
+      }
+    });
+  },
   name: "Login",
   methods: {
     login() {
-      googleSignin();
+      var router = this.$router;
+      firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+          console.log("ur socow");
+          console.log(user);
+        } else {
+          googleSignin().then(() => router.push({ path: "/dashboard" }));
+        }
+      });
     },
     google() {
       googleSignin();
