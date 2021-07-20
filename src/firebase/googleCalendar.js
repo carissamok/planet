@@ -12,25 +12,19 @@ const credentials = {
     scope: 'https://www.googleapis.com/auth/calendar.events'
 }
 
-function load() {
+const planetScope = 'https://www.googleapis.com/auth/calendar'
+
+function load(scope, execute, params) {
     gapi.client.setApiKey('AIzaSyBnmOYId6O1ZrXMdeeUDCqxn7N_irSMNco')
     gapi.client.load("https://content.googleapis.com/discovery/v1/apis/calendar/v3/rest")
         .then(
             function () {
                 console.log("GAPI client loaded for API");
                 gapi.auth.authorize(
-                    { client_id: credentials.client_id, scope: credentials.scope, immediate: true },
+                    { client_id: credentials.client_id, scope: scope, immediate: true },
                     authResult => {
                       if (authResult && !authResult.error) {
-                        gapi.client.calendar.events.list({ 
-                            'calendarId': 'primary'
-                         }).then(
-                            function(response) {
-                                importGcal(response.result.items)
-                            },
-                            function(err) { 
-                                console.error("Execute error", err); 
-                            });
+                        execute(params)
                       } else {
                           console.error("Authorization error", authResult.error)
                       }
@@ -41,24 +35,118 @@ function load() {
             });
 }
 
-function start() {
-    gapi.client.init(credentials).then(() => {
-        console.log('Successful initialization')
-        load()
+function executeEvents(params) {
+    return gapi.client.calendar.events.list({ 
+        'calendarId': params.calendarId
+     }).then(
+        function(response) {
+            importGcal(response.result.items)
+        },
+        function(err) { 
+            console.error("Execute error", err); 
+        });
+}
+
+function executeAddPlanet(params) { 
+    console.log(params)
+    const email = firebase.auth().currentUser.email
+
+    gapi.client.calendar.calendarList.list({})
+        .then(function(response) {
+                if(!response.result.items.some(cal => cal.summary === 'PlanetCal')) {
+                    var docRef = firebase.firestore().collection("users").doc(email);
+                    docRef.get().then((doc) => {
+                        if (doc.data().planetCalId == null) {
+                            console.log("Creating PlanetCal calendar");
+                            gapi.client.calendar.calendars.insert({
+                                "resource": {
+                                  "summary": "PlanetCal"
+                                }
+                              })
+                                  .then(function(response) {
+                                          console.log("Calendar successfully created!", response);
+                                          docRef.update({
+                                            planetCalId: response.result.id
+                                        })
+                                        .then(() => {
+                                            console.log("Document successfully updated!");
+                                        })
+                                        .catch((error) => {
+                                            console.error("Error updating document: ", error);
+                                        });
+                                        },
+                                        function(err) { console.error("Execute error", err); });
+                            
+                        } else {
+                            console.log("No such document!");
+                        }
+                    }).catch((error) => {
+                        console.log("Error getting document:", error);
+                    });
+                }
+              },
+              function(err) { console.error("Execute error", err); })
+}
+
+function executeCreateEvent(params) {
+    const email = firebase.auth().currentUser.email
+    var docRef = firebase.firestore().collection("users").doc(email);
+    docRef.get().then((response) => {
+        return gapi.client.calendar.events.insert(
+            {
+            "sendNotifications": true,
+            "calendarId": response.data().planetCalId,
+            "resource": {
+                "end": {
+                    "dateTime": params.endTime
+                },
+                "start": {
+                    "dateTime": params.startTime
+                },
+                "summary": params.name,
+                "description": params.description,
+                "attendees": params.users
+            }
+        })
+            .then(function(response) {
+                    // Handle the results here (response.result has the parsed body).
+                    console.log("Response", response);
+                    },
+                    function(err) { console.error("Execute error", err); });
     })
 }
 
-function addGCalEvents() {
-    gapi.load('client:auth2', start)
+function addGCalEvents(params) {
+    gapi.load('client:auth2', () => gapi.client.init(credentials).then(() => {
+        console.log('Successful initialization')
+        load(credentials.scope, executeEvents, params)
+    }))
 }
+
+function addPlanetCalendar(params) {
+    gapi.load('client:auth2', () => gapi.client.init(credentials).then(() => { 
+        console.log('Successful initialization')
+        load(planetScope, executeAddPlanet, params)
+    }))
+}
+
+function createGcalEvent(params) {
+    gapi.load('client:auth2', () => gapi.client.init(credentials).then(() => { 
+        console.log('Successful initialization')
+        load(planetScope, executeCreateEvent, params)
+    }))
+}
+
 
 function importGcal(gcalEvents) {
     gcalEvents.forEach(event => {
         const userEmail = firebase.auth().currentUser.email;
         const attendees = []
-        event.attendees.forEach((guest) => {
-            attendees.push(guest.email)
-        })
+        if(event.attendees) {
+            event.attendees.forEach((guest) => {
+                attendees.push(guest.email)
+            })
+        }
         console.log(event)
         if(event.start && event.end && event.start.dateTime) {
             const gcal = {
@@ -85,4 +173,4 @@ function importGcal(gcalEvents) {
 }
 
 
-export default addGCalEvents;
+export { addGCalEvents, addPlanetCalendar, createGcalEvent };

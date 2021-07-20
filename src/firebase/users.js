@@ -7,6 +7,7 @@ function googleSignin() {
   // Sign in Firebase using popup auth and Google as the identity provider.
   var provider = new firebase.auth.GoogleAuthProvider();
   provider.addScope('https://www.googleapis.com/auth/calendar.events')
+  provider.addScope('https://www.googleapis.com/auth/calendar')
 
   firebase
     .auth()

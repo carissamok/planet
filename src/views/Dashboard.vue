@@ -10,8 +10,7 @@
 import SubNavbar from "../components/SubNavbar.vue";
 import Navbar from "../components/Navbar.vue";
 import CalendarMonth from "../components/calendar/CalendarMonth.vue";
-import addGCalEvents from "../firebase/googleCalendar.js";
-import { upcomingEvents } from "../firebase/events.js";
+import { createEvent } from "../firebase/events.js";
 
 export default {
   components: {
@@ -21,8 +20,11 @@ export default {
   },
   name: "Dashboard",
   beforeMount() {
-    addGCalEvents();
-    upcomingEvents().then(events => console.log(events[0]))
+    // addGCalEvents();
+    // addPlanetCalendar();
+    // createGcalEvent()
+
+    createEvent("julieewang822@gmail.com", "test", [{"email": "julie.wang@toasttab.com"}], "description", "2021-07-28T8:00:00-04:00", "2021-07-28T9:00:00-04:00", "location")
   },
 };
 </script>

@@ -1,6 +1,7 @@
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
+import { createGcalEvent } from "./googleCalendar";
 
 // creates an event for the user and returns event id
 function createEvent(userEmail, name, users, description, startTime, endTime, location) {
@@ -14,6 +15,8 @@ function createEvent(userEmail, name, users, description, startTime, endTime, lo
     }
 
     const res = firebase.firestore().collection('users').doc(userEmail).collection('events').add(newEvent);
+
+    createGcalEvent(newEvent)
     return (res.id)
 }
 // TODO should it not require all params as arguments?
