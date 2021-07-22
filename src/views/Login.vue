@@ -37,14 +37,35 @@
 
 <script>
 import { googleSignin } from "../../src/firebase/users.js";
+import "../../src/router/index.js";
+import * as firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/firestore";
 
 // import { defineComponent } from '@vue/composition-api'
 export default {
+  beforeMount() {
+    var router = this.$router;
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        console.log("logged in");
+        console.log(user);
+        router.push({ path: "/dashboard" });
+      }
+    });
+  },
   name: "Login",
   methods: {
     login() {
-      googleSignin()
-      console.log("login was pressed");
+      var router = this.$router;
+      firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+          console.log("ur socow");
+          console.log(user);
+        } else {
+          googleSignin().then(() => router.push({ path: "/dashboard" }));
+        }
+      });
     },
     google() {
       googleSignin();
