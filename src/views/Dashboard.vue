@@ -1,9 +1,17 @@
 <template>
+<<<<<<< HEAD
   <div>
     <Navbar />
     <SubNavbar />
     <Calendar-Month />
   </div>
+=======
+    <div>
+        <Navbar />
+        <SubNavbar />
+        <Calendar-Month />
+    </div>
+>>>>>>> master
 </template>
 
 <script>
@@ -37,24 +45,16 @@ export default {
 </script>
 
 <style scoped>
-div {
-  margin: 0px;
-}
-/* h1, h2 {
-        font-weight: normal;
+
+    Navbar {
+        background-color: #e3e7fe;
+        position: -webkit-sticky;
+        position: sticky;
     }
 
-    ul {
-        list-style-type: none;
-        padding: 0;
+    div {
+        margin: 0px
     }
 
-    li {
-        display: inline-block;
-        margin: 0 10px;
-    }
 
-    a {
-        color: #42b983;
-    } */
 </style>
