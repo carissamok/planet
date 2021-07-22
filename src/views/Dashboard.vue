@@ -1,17 +1,9 @@
 <template>
-<<<<<<< HEAD
   <div>
     <Navbar />
     <SubNavbar />
     <Calendar-Month />
   </div>
-=======
-    <div>
-        <Navbar />
-        <SubNavbar />
-        <Calendar-Month />
-    </div>
->>>>>>> master
 </template>
 
 <script>
