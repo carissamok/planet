@@ -2,13 +2,11 @@
 <template>
   <div id="header">
       <img alt="Calendar logo" src="../assets/calendar.png" />
-    <div id="nav"> 
-      <nav id="header">
-        <router-link to="/dashboard">Dashboard</router-link> | 
-        <router-link to="/timepreferences">Time Preferences</router-link> | 
-        <router-link to="/settings">Settings</router-link>
-      </nav>
-    </div>
+    <nav> 
+        <router-link to="/home" tag="button">Home</router-link>
+        <span />
+        <router-link to="/settings" tag="button">Settings</router-link>
+    </nav>
   </div>
   <router-view />
 </template>
@@ -20,34 +18,62 @@ export default {
 </script>
 
 <style scoped>
+
 * {
+  background-color: #fff;
   box-sizing: border-box;
-  margin: 0px;
+  /* margin: 0px; */
 }
 
 div {
   margin: 0px;
-  padding: 0px;
+  padding: 0px 20px 0px 0px;
 }
 
 nav {
   /* background-color: #fff; */
+  display: inline-block; 
+  /* justify-content: space-between; */
   margin: 0px;
+  padding: 0px 10px 0px 10px;
 }
+
+/* halp */
+nav button {
+  padding: 100px;
+}
+
+/* nav router-link {
+  margin-right: 10px;
+}
+
+nav router-link:lastchild {
+  margin-right: 0px;
+} */
 
 body {
   margin: 0px;
 }
 
 img {
-  width: 4em; 
-  height: 4em;
+  width: 3.5em; 
+  height: 3.5em;
 } 
 
 #header {
   display: flex; 
   justify-content: space-between;
   align-items: center;
+}
+
+ul {
+  display: flex; 
+  justify-content: space-between;
+}
+
+/* this is just a temp solution!!!!!!! */
+span {
+  margin: 10px;
 }
 
 router-link {
