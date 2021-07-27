@@ -1,5 +1,5 @@
 import { gapi } from "gapi-script";
-import * as firebase from "firebase/app";
+import { firebase } from "@firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 
@@ -24,7 +24,8 @@ function load(scope, execute, params) {
                     { client_id: credentials.client_id, scope: scope, immediate: true },
                     authResult => {
                       if (authResult && !authResult.error) {
-                        execute(params)
+                          console.log('Authorized!')
+                          execute(params)
                       } else {
                           console.error("Authorization error", authResult.error)
                       }
@@ -147,28 +148,36 @@ function importGcal(gcalEvents) {
                 attendees.push(guest.email)
             })
         }
-        console.log(event)
+        var gcal = {}
+        var month, year
         if(event.start && event.end && event.start.dateTime) {
-            const gcal = {
+            gcal = {
                 start: new Date(event.start.dateTime).toLocaleString(),
                 end: new Date(event.end.dateTime).toLocaleString(),
                 name: event.summary,
                 attendees: attendees
             }
-            firebase.firestore().collection('users').doc(userEmail).collection('googleCal').add(gcal);
+            month = new Date(event.start.dateTime).getMonth() + 1
+            year = new Date(event.start.dateTime).getFullYear()
         } else if(event.start && event.end) {
             const start = new Date(event.start.date)
             const startDateTime = new Date(start.getFullYear(), start.getMonth(), start.getDate(), 0, 0, 0, 0)
             const end = new Date(event.end.date)
             const endDateTime = new Date(end.getFullYear(), end.getMonth(), end.getDate(), 23, 59, 0, 0)
-            const gcal = {
+            gcal = {
                 start: startDateTime.toLocaleString(),
                 end: endDateTime.toLocaleString(),
                 name: event.summary, 
                 attendees: attendees
             }
-            firebase.firestore().collection('users').doc(userEmail).collection('googleCal').add(gcal);
+            month = startDateTime.getMonth() + 1
+            year = startDateTime.getFullYear()
         }
+        let docRef = (gcal.name || "event").replace(/\//g, "-")
+        let collectionName = 'googleCal' + "-" + month + "-" + year
+        if (docRef && month && year && gcal) {
+            firebase.firestore().collection('users').doc(userEmail).collection(collectionName).doc(docRef).set(gcal);
+        } 
     })
 }
 

@@ -38,7 +38,7 @@
 <script>
 import { googleSignin } from "../../src/firebase/users.js";
 import "../../src/router/index.js";
-import * as firebase from "firebase/app";
+import { firebase } from "@firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 
@@ -50,7 +50,7 @@ export default {
       if (user) {
         console.log("logged in");
         console.log(user);
-        router.push({ path: "/dashboard" });
+        router.push({ path: "/home" });
       }
     });
   },
@@ -63,7 +63,7 @@ export default {
           console.log("ur socow");
           console.log(user);
         } else {
-          googleSignin().then(() => router.push({ path: "/dashboard" }));
+          googleSignin().then(() => router.push({ path: "/home" }));
         }
       });
     },

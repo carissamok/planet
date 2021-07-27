@@ -96,5 +96,20 @@ function isNewUser() {
   return false;
 }
 
-export { googleSignin, isNewUser, logout };
+function getDisplayName() {
+  firebase
+  .auth()
+  .onAuthStateChanged(function (user) {
+    if (user) {
+      console.log("hellooooo")
+      console.log(user)
+    }
+  })
+}
+
+function setDisplayName(displayName) {
+  console.log(displayName)
+}
+
+export { googleSignin, isNewUser, logout, getDisplayName, setDisplayName};
 // export default logout;
