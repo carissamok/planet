@@ -6,7 +6,8 @@ import "firebase/firestore";
 function googleSignin() {
   // Sign in Firebase using popup auth and Google as the identity provider.
   var provider = new firebase.auth.GoogleAuthProvider();
-  provider.addScope("https://www.googleapis.com/auth/calendar.events");
+  provider.addScope('https://www.googleapis.com/auth/calendar.events')
+  provider.addScope('https://www.googleapis.com/auth/calendar')
 
   firebase
     .auth()
@@ -95,5 +96,20 @@ function isNewUser() {
   return false;
 }
 
-export { googleSignin, isNewUser, logout };
+function getDisplayName() {
+  firebase
+  .auth()
+  .onAuthStateChanged(function (user) {
+    if (user) {
+      console.log("hellooooo")
+      console.log(user)
+    }
+  })
+}
+
+function setDisplayName(displayName) {
+  console.log(displayName)
+}
+
+export { googleSignin, isNewUser, logout, getDisplayName, setDisplayName};
 // export default logout;

@@ -1,9 +1,18 @@
-import * as firebase from "firebase/app";
+import { firebase } from "@firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
+import { createGcalEvent } from "./googleCalendar";
+
+//startTime/endTime format: 7/22/2021, 9:00:00 PM
+function getMonthYear(startTime) {
+    const firstSlashPos = startTime.indexOf('/');
+    const secondSlashPos = startTime.indexOf('/', firstSlashPos + 1);
+    return startTime.substring(0, firstSlashPos) + '-' + startTime.substring(secondSlashPos + 1, secondSlashPos + 5);
+}
 
 // creates an event for the user and returns event id
 function createEvent(userEmail, name, users, description, startTime, endTime, location) {
+    const monthYear = getMonthYear(startTime);
     const newEvent = {
         name: name,
         users: users,
@@ -13,12 +22,14 @@ function createEvent(userEmail, name, users, description, startTime, endTime, lo
         location: location
     }
 
-    const res = firebase.firestore().collection('users').doc(userEmail).collection('events').add(newEvent);
+    //const res = firebase.firestore().collection('users').doc(userEmail).collection('events').doc(monthYear).collection(monthYear + "events").add(newEvent);
+    const res = firebase.firestore().collection('users').doc(userEmail).collection(monthYear + "events").add(newEvent);
     return (res.id)
 }
 // TODO should it not require all params as arguments?
 function editEvent(userEmail, eventId, name, users, description, startTime, endTime, location) {
-    firebase.firestore().collection('users').doc(userEmail).collection('events').doc(eventId).set({
+    const monthYear = getMonthYear(startTime);
+    firebase.firestore().collection('users').doc(userEmail).collection(monthYear + "events").doc(eventId).set({
         name: name,
         users: users,
         description: description,
@@ -28,18 +39,20 @@ function editEvent(userEmail, eventId, name, users, description, startTime, endT
     })
 }
 
+// monthYear format: 3-2021
+
 // deletes event of user with given eventId
-function deleteEvent(userEmail, eventId) {
-    firebase.firestore().collection('users').doc(userEmail).collection('events').doc(eventId).delete();
+function deleteEvent(userEmail, eventId, monthYear) {
+    firebase.firestore().collection('users').doc(userEmail).collection(monthYear + "events").doc(eventId).delete();
 }
 
-function upcomingEvents() {
+function upcomingEvents(monthYear) {
     const userEmail = firebase.auth().currentUser.email;
-    const events = firebase.firestore().collection('users').doc(userEmail).collection('events');
+    const events = firebase.firestore().collection('users').doc(userEmail).collection(monthYear + "events");
     var displayEvents = []
 
     // can use .where to check for certain times
-    return new Promise(function(resolve) {
+    return new Promise(function (resolve) {
         events.get().then((responses) => {
             responses.forEach((response) => {
                 const event = response.data();
@@ -57,7 +70,6 @@ function upcomingEvents() {
             resolve(displayEvents)
         })
     })
-
 }
 
 
