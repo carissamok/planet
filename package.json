@@ -13,18 +13,19 @@
     "core-js": "^3.6.5",
     "dayjs": "^1.10.5",
     "daypilot-pro-vue": "https://npm.daypilot.org/daypilot-pro-vue/trial/2020.4.4807.tar.gz",
-    "firebase": "^7.24.0",
+    "firebase": "^8.7.1",
     "gapi-script": "^1.2.0",
     "modal": "^1.2.0",
     "save": "^2.4.0",
     "vue": "^3.0.0",
     "vue-gapi": "^1.1.0",
-    "vue-router": "^4.0.8"
+    "vue-router": "^4.0.8",
+    "vue-template-compiler": "^2.6.14"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
+    "@vue/cli-plugin-eslint": "^3.1.1",
+    "@vue/cli-service": "^4.5.13",
     "@vue/compiler-sfc": "^3.0.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
