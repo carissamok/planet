@@ -12,6 +12,7 @@
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "dayjs": "^1.10.5",
+    "daypilot-pro-vue": "https://npm.daypilot.org/daypilot-pro-vue/trial/2020.4.4807.tar.gz",
     "firebase": "^8.7.1",
     "gapi-script": "^1.2.0",
     "modal": "^1.2.0",

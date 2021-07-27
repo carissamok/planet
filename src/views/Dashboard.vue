@@ -1,16 +1,17 @@
 <template>
-  <div>
-    <Navbar />
-    <SubNavbar />
-    <Calendar-Month />
-  </div>
+    <div>
+        <Navbar />
+        <SubNavbar />
+        <Calendar />
+    </div>
 </template>
 
 <script>
-import SubNavbar from "../components/SubNavbar.vue";
-import Navbar from "../components/Navbar.vue";
-import CalendarMonth from "../components/calendar/CalendarMonth.vue";
-import addGCalEvents from "../firebase/googleCalendar.js";
+import SubNavbar from '../components/SubNavbar.vue'
+import Navbar from '../components/Navbar.vue'
+//import CalendarMonth from '../components/calendar/CalendarMonth.vue'
+import Calendar from '../components/weekly-calendar/Calendar.vue'
+import addGCalEvents from '../firebase/googleCalendar.js';
 import { upcomingEvents } from "../firebase/events.js";
 import * as firebase from "firebase/app";
 import "firebase/auth";
@@ -20,7 +21,7 @@ export default {
   components: {
     Navbar,
     SubNavbar,
-    CalendarMonth,
+    Calendar,
   },
   name: "Dashboard",
   beforeMount() {
