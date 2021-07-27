@@ -2,21 +2,22 @@
     <div>
         <Navbar />
         <SubNavbar />
-        <Calendar-Month />
+        <Calendar />
     </div>
 </template>
 
 <script>
 import SubNavbar from '../components/SubNavbar.vue'
 import Navbar from '../components/Navbar.vue'
-import CalendarMonth from '../components/calendar/CalendarMonth.vue'
+//import CalendarMonth from '../components/calendar/CalendarMonth.vue'
+import Calendar from '../components/weekly-calendar/Calendar.vue'
 import addGCalEvents from '../firebase/googleCalendar.js'
 
 export default {
     components: { 
         Navbar,
         SubNavbar,
-        CalendarMonth
+        Calendar
     },
     name: 'Dashboard',
     beforeMount() {
