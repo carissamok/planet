@@ -24,7 +24,7 @@ export default {
   },
   name: "Dashboard",
   beforeMount() {
-    firebase.auth().onAuthStateChanged(function (user) {
+    firebase.default.auth().onAuthStateChanged(function (user) {
       if (user) {
         console.log("logged in");
         console.log(user);

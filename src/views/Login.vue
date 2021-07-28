@@ -47,11 +47,11 @@ import "firebase/firestore";
 export default {
   beforeMount() {
     var router = this.$router;
-    firebase.auth().onAuthStateChanged(function (user) {
+    firebase.default.auth().onAuthStateChanged(function (user) {
       if (user) {
         console.log("logged in");
         console.log(user);
-        router.push({ path: "/dashboard" });
+        router.push({ path: "/home" });
       }
     });
   },
@@ -67,7 +67,7 @@ export default {
           console.log("ur socow");
           console.log(user);
         } else {
-          googleSignin().then(() => router.push({ path: "/dashboard" }));
+          googleSignin().then(() => router.push({ path: "/home" }));
         }
       });
     },

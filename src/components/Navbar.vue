@@ -10,6 +10,7 @@
         <div class="dropdown">
           <button class="dropbtn">Name</button>
           <div class="dropdown-content">
+            <!-- @backend pls figure how to log someone out here thank youuu -->
             <router-link to="/" tag="button">Log out</router-link>
           </div>
         </div>
