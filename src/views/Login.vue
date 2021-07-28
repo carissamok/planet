@@ -3,6 +3,7 @@
     <!-- <head>
       <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;1,200&display=swap" rel="stylesheet">
     </head> -->
+    <LoginNavbar />
     <header>
       <img alt="Planet logo" src="../assets/planetlogo.png" />
       <section>
@@ -37,24 +38,27 @@
 
 <script>
 import { googleSignin } from "../../src/firebase/users.js";
+import LoginNavbar from '../components/LoginNavbar.vue';
 import "../../src/router/index.js";
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 
-// import { defineComponent } from '@vue/composition-api'
 export default {
   beforeMount() {
     var router = this.$router;
-    firebase.auth().onAuthStateChanged(function (user) {
+    firebase.default.auth().onAuthStateChanged(function (user) {
       if (user) {
         console.log("logged in");
         console.log(user);
-        router.push({ path: "/dashboard" });
+        router.push({ path: "/home" });
       }
     });
   },
   name: "Login",
+  components: { 
+    LoginNavbar,
+  },
   methods: {
     login() {
       var router = this.$router;
@@ -63,7 +67,7 @@ export default {
           console.log("ur socow");
           console.log(user);
         } else {
-          googleSignin().then(() => router.push({ path: "/dashboard" }));
+          googleSignin().then(() => router.push({ path: "/home" }));
         }
       });
     },
@@ -119,7 +123,7 @@ h3 {
   display: inline-block;
   padding: 0.35em 1.2em;
   border: 0.1em solid #ffffff;
-  margin: 0 0.3em 0.3em 0;
+  /* margin: 0 0.3em 0.3em 0; */
   border-radius: 0.12em;
   box-sizing: border-box;
   text-decoration: none;
