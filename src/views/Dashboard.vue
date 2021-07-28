@@ -9,8 +9,7 @@
 <script>
 import SubNavbar from '../components/SubNavbar.vue'
 import Navbar from '../components/Navbar.vue'
-//import CalendarMonth from '../components/calendar/CalendarMonth.vue'
-import Calendar from '../components/weekly-calendar/Calendar.vue'
+import Calendar from '../components/weekly-calendar/HomeCalendar.vue'
 import addGCalEvents from '../firebase/googleCalendar.js';
 import { upcomingEvents } from "../firebase/events.js";
 import * as firebase from "firebase/app";

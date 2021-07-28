@@ -13,24 +13,10 @@ export default {
     return {
       config: {
         viewType: "Week",
-        timeRangeSelectedHandling: "Enabled",
-        onTimeRangeSelected: (args) => {
-          DayPilot.Modal.prompt("Create a new event:", "Event 1").then(
-            (modal) => {
-              var dp = args.control;
-              dp.clearSelection();
-              if (modal.canceled) {
-                return;
-              }
-              dp.events.add({
-                start: args.start,
-                end: args.end,
-                id: DayPilot.guid(),
-                text: modal.result,
-              });
-            }
-          );
-        },
+        hourWidth: 0,
+        cellHeight: 100,
+        dayEndsHour: 3,
+        timeRangeSelectedHandling: "Disabled",
         eventDeleteHandling: "Disabled",
         onEventMoved: () => {
           this.message("Event moved");
@@ -115,6 +101,7 @@ export default {
   methods: {
     loadEvents() {
       // placeholder for an AJAX call
+
       var data = [
         {
           id: 1,
