@@ -3,6 +3,7 @@
     <!-- <head>
       <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;1,200&display=swap" rel="stylesheet">
     </head> -->
+    <LoginNavbar />
     <header>
       <img alt="Planet logo" src="../assets/planetlogo.png" />
       <section>
@@ -37,10 +38,13 @@
 
 <script>
 import { googleSignin } from "../../src/firebase/users.js";
+import LoginNavbar from '../components/LoginNavbar.vue';
 
-// import { defineComponent } from '@vue/composition-api'
 export default {
   name: "Login",
+  components: { 
+    LoginNavbar,
+  },
   methods: {
     login() {
       googleSignin()
@@ -98,7 +102,7 @@ h3 {
   display: inline-block;
   padding: 0.35em 1.2em;
   border: 0.1em solid #ffffff;
-  margin: 0 0.3em 0.3em 0;
+  /* margin: 0 0.3em 0.3em 0; */
   border-radius: 0.12em;
   box-sizing: border-box;
   text-decoration: none;
