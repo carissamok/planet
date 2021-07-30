@@ -3,10 +3,15 @@ import "firebase/auth";
 import "firebase/firestore";
 
 // Creates timePref or updates
-// timePrefs: array of dictionaries: {start: "", end: "", type: }, where type is busy, free, and halfFree?
+// timePrefs: array of dictionaries: {day: 2, start: "13:00", end: "14:00", type: }, where type is busy, available, and preferred?
 function setTimePref(userEmail, timePrefs) {
     firebase.firestore().collection('users').doc(userEmail).update({ timePref: timePrefs })
 }
+
+/*function addTimePref(userEmail, day, start, end, type) {
+    var user = firebase.firestore().collection('users').doc(userEmail);
+
+}*/
 
 function getTimePref(userEmail) {
     return new Promise(function (resolve) {
