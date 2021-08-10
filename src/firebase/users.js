@@ -97,18 +97,50 @@ function isNewUser() {
 }
 
 function getDisplayName() {
+  return new Promise(function (resolve) { 
   firebase
   .auth()
   .onAuthStateChanged(function (user) {
     if (user) {
-      console.log("hellooooo")
-      console.log(user)
+        firebase
+      .firestore()
+      .collection("users")
+      .doc(user.email)
+      .get()
+      .then((doc) => {
+        if (!doc.exists) {
+          console.log("User does not exist!");
+        } else {
+          resolve(doc.data().name);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     }
-  })
+  })})
 }
 
 function setDisplayName(displayName) {
-  console.log(displayName)
+  return new Promise(function (resolve) { 
+    firebase
+    .auth()
+    .onAuthStateChanged(function (user) {
+      if (user) {
+          firebase
+        .firestore()
+        .collection("users")
+        .doc(user.email)
+        .update({
+          name: displayName
+      }).then(() => {
+        resolve("Display name has been updated to: " + displayName)
+      })
+        .catch((error) => {
+          console.log(error);
+        });
+      }
+    })})
 }
 
 export { googleSignin, isNewUser, logout, getDisplayName, setDisplayName};

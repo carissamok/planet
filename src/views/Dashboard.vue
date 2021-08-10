@@ -12,9 +12,9 @@ import Navbar from "../components/Navbar.vue";
 import { addGCalEvents } from "../firebase/googleCalendar.js";
 //import CalendarMonth from '../components/calendar/CalendarMonth.vue'
 import Calendar from "../components/weekly-calendar/Calendar.vue";
-import { upcomingEvents } from "../firebase/events.js";
-import { getDisplayName } from "../firebase/users.js";
+// import { createEvent } from "../firebase/events.js";
 import { firebase } from "@firebase/app";
+// import getTimeMatch from "../firebase/timeMatch.js"
 
 export default {
   components: {
@@ -28,8 +28,8 @@ export default {
       if (user) {
         console.log("logged in");
         addGCalEvents({ calendarId: "primary" });
-        upcomingEvents().then((events) => console.log(events[0]));
-        getDisplayName();
+        // createEvent("julieewang822@gmail.com", "test", ["julie.wang@toasttab.com"], "ello", "07/01/2021, 08:00 AM", "07/01/2021, 09:00 PM", "new jerz")
+        // getTimeMatch("boba !!!!!!!!!!! test", ["joncheng@seas.upenn.edu"], ["morning", "afternoon"], 2, Date.now(), Date.now().setDate(13)) 
       }
     });
   },

@@ -10,8 +10,32 @@ function getMonthYear(startTime) {
     return startTime.substring(0, firstSlashPos) + '-' + startTime.substring(secondSlashPos + 1, secondSlashPos + 5);
 }
 
+function getDayHourMinutes(time) {
+    const firstSlashPos = time.indexOf('/');
+    const secondSlashPos = time.indexOf('/', firstSlashPos + 1);
+    const day = time.substring(firstSlashPos + 1, secondSlashPos);
+    var hours = time.substring(time.indexOf(", ") + 2, time.indexOf(":"))
+    var minutes = time.substring(time.indexOf(":") + 1, time.indexOf(":") + 3)
+    if (time.slice(-2) === "PM") {
+        hours = parseInt(hours) + 12
+    }
+    return {day: day, hours: hours, minutes: minutes}
+}
+
+function dateStringToDate(time) {
+    const monthYear = getMonthYear(time)
+    const month = monthYear.slice(0, 2) - 1
+    const year = monthYear.slice(-4)
+
+    const dayHoursMinutes = getDayHourMinutes(time)
+    console.log(dayHoursMinutes)
+    console.log(new Date(year, month, dayHoursMinutes.day, dayHoursMinutes.hours, dayHoursMinutes.minutes))
+    return new Date(year, month, dayHoursMinutes.day, dayHoursMinutes.hours, dayHoursMinutes.minutes)
+}
+
 // creates an event for the user and returns event id
 function createEvent(userEmail, name, users, description, startTime, endTime, location) {
+    console.log(endTime)
     const monthYear = getMonthYear(startTime);
     const newEvent = {
         name: name,
@@ -24,6 +48,12 @@ function createEvent(userEmail, name, users, description, startTime, endTime, lo
 
     //const res = firebase.firestore().collection('users').doc(userEmail).collection('events').doc(monthYear).collection(monthYear + "events").add(newEvent);
     const res = firebase.firestore().collection('users').doc(userEmail).collection(monthYear + "events").add(newEvent);
+    console.log("Event created!")
+    newEvent.startTime = dateStringToDate(startTime).toISOString()
+    newEvent.endTime = dateStringToDate(endTime).toISOString()
+    console.log(newEvent)
+    createGcalEvent(newEvent)
+    console.log("PlanetCal event created")
     return (res.id)
 }
 // TODO should it not require all params as arguments?

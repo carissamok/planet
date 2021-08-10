@@ -1,4 +1,4 @@
-import * as firebase from "firebase/app";
+import { firebase } from "@firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 
@@ -39,7 +39,7 @@ function getTimeMatch(eventName, invitees, timeOfDay, eventLength, startDate, en
 
         var day = startDateTime.getDay();
         var hour = startDateTime.getHours();
-        var minute = startDateTime.getMinutes()
+        // var minute = startDateTime.getMinutes()
 
         if (hour < 12) {
             timeSlot.timeOfDay = 'morning';
@@ -56,7 +56,7 @@ function getTimeMatch(eventName, invitees, timeOfDay, eventLength, startDate, en
         invitees.forEach(userEmail => {
             var userPreference = 0;
             firebase.firestore().collection('users').doc(userEmail).get().then(user => {
-                timePrefs = user.data().timePref;
+                const timePrefs = user.data().timePref;
                 timePrefs.forEach(timePref => {
                     if (timePref.day === day) {
                         var prefStart = new Date(startDateTime);
@@ -71,7 +71,7 @@ function getTimeMatch(eventName, invitees, timeOfDay, eventLength, startDate, en
                             if (userPreference === undefined) {
                                 console.log("ERROR: incompatible type in timePref");
                             }
-                            break;
+                            // THIS IS SUPPOSED TO BE A BREAK BUT IT DOESN'T WORK IN FOR EACH LOOPS AHHH
                         }
                     }
                 })
@@ -94,19 +94,18 @@ function getTimeMatch(eventName, invitees, timeOfDay, eventLength, startDate, en
     }
 
     // [{startDate: obj, endDate: obj, preferenceScore: 1.5, timeOfDay: ['morning', 'afternoon']}]
-    eventLengthSlots = []
+    var eventLengthSlots = []
     const numSlots = eventLength * 2
 
     // keeping track of the last possible event that it can be
     var pointer = 0
     while (pointer < halfHourSlots.length - numSlots) {
         // setting initials for a certain event slot
-        var totalPreference = 0
-        var everyoneAvailable = true
+        var totalPreference2 = 0
 
         var possibleEvent = { startDate: halfHourSlots[pointer], endDate: halfHourSlots[pointer + numSlots] }
 
-        var timeOfDay = []
+        var timeOfDayList = []
 
         // for each half hour time slot within an event, calculate total + check if everyones available
         for (let count = 0; count < numSlots; count++) { //TODO: someone check my logic on the boundary
@@ -115,16 +114,16 @@ function getTimeMatch(eventName, invitees, timeOfDay, eventLength, startDate, en
                 everyoneAvailable = false
             }
 
-            if (!timeOfDay.includes(currentSlot.timeOfDay)) {
-                timeOfDay.push(currentSlot.timeOfDay)
+            if (!timeOfDayList.includes(currentSlot.timeOfDay)) {
+                timeOfDayList.push(currentSlot.timeOfDay)
             }
-            totalPreference += halfHourSlots[pointer + count].preference
+            totalPreference2 += halfHourSlots[pointer + count].preference
         }
 
-        possibleEvent.timeOfDay = timeOfDay
+        possibleEvent.timeOfDay = timeOfDayList
 
         // averaging all the half hour slots 
-        var average = totalPreference / numSlots
+        var average = totalPreference2 / numSlots
         if (everyoneAvailable) {
             average += 1
         }
@@ -164,3 +163,5 @@ function getTimeMatch(eventName, invitees, timeOfDay, eventLength, startDate, en
 // 0.5 - 1.0 orange
 // 1.0 - 1.5 yellow
 // 1.5 - 2.0 green
+
+export default getTimeMatch

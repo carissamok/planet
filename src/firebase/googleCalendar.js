@@ -92,6 +92,10 @@ function executeAddPlanet(params) {
 function executeCreateEvent(params) {
     const email = firebase.auth().currentUser.email
     var docRef = firebase.firestore().collection("users").doc(email);
+    const attendeesList = []
+    params.users.forEach(user => {
+        attendeesList.push({"email": user})
+    })
     docRef.get().then((response) => {
         return gapi.client.calendar.events.insert(
             {
@@ -106,7 +110,7 @@ function executeCreateEvent(params) {
                 },
                 "summary": params.name,
                 "description": params.description,
-                "attendees": params.users
+                "attendees": attendeesList
             }
         })
             .then(function(response) {
@@ -174,7 +178,7 @@ function importGcal(gcalEvents) {
             year = startDateTime.getFullYear()
         }
         let docRef = (gcal.name || "event").replace(/\//g, "-")
-        let collectionName = 'googleCal' + "-" + month + "-" + year
+        let collectionName = month + "-" + year + "gcal"
         if (docRef && month && year && gcal) {
             firebase.firestore().collection('users').doc(userEmail).collection(collectionName).doc(docRef).set(gcal);
         } 
