@@ -11,10 +11,12 @@ import SubNavbar from "../components/SubNavbar.vue";
 import Navbar from "../components/Navbar.vue";
 import { addGCalEvents } from "../firebase/googleCalendar.js";
 //import CalendarMonth from '../components/calendar/CalendarMonth.vue'
-import Calendar from "../components/weekly-calendar/Calendar.vue";
 // import { createEvent } from "../firebase/events.js";
 import { firebase } from "@firebase/app";
 // import getTimeMatch from "../firebase/timeMatch.js"
+import Calendar from '../components/weekly-calendar/HomeCalendar.vue'
+import "firebase/auth";
+import "firebase/firestore";
 
 export default {
   components: {
@@ -24,7 +26,7 @@ export default {
   },
   name: "Dashboard",
   beforeMount() {
-    firebase.auth().onAuthStateChanged(function (user) {
+    firebase.default.auth().onAuthStateChanged(function (user) {
       if (user) {
         console.log("logged in");
         addGCalEvents({ calendarId: "primary" });
