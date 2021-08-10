@@ -40,7 +40,7 @@
 import { googleSignin } from "../../src/firebase/users.js";
 import LoginNavbar from '../components/LoginNavbar.vue';
 import "../../src/router/index.js";
-import { firebase } from "@firebase/app";
+import { firebase } from '@firebase/app'
 import "firebase/auth";
 import "firebase/firestore";
 

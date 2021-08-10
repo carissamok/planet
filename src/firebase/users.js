@@ -72,7 +72,8 @@ function googleSignin() {
 }
 
 function logout() {
-  firebase.auth().signOut();
+  firebase.auth().signOut().then(() => console.log(firebase.auth().currentUser))
+  console.log("logged out!")
 }
 
 function isNewUser() {

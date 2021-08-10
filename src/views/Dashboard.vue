@@ -15,6 +15,7 @@ import { addGCalEvents } from "../firebase/googleCalendar.js";
 import { firebase } from "@firebase/app";
 // import getTimeMatch from "../firebase/timeMatch.js"
 import Calendar from '../components/weekly-calendar/HomeCalendar.vue'
+// import { upcomingEvents } from "../firebase/events.js";
 import "firebase/auth";
 import "firebase/firestore";
 
