@@ -1,10 +1,13 @@
 <!-- overall navbar at the top of the login page-->
 <template>
   <div id="header">
-      <img alt="Planet logo" src="../assets/planetlogo.png" />
+      <!-- <img alt="Planet logo" src="../assets/planetlogo.png" /> -->
     <nav> 
-        <router-link to="/aboutus" tag="button">About Us</router-link>
-        <span />
+        <div id="helperlinks">
+          <router-link to="/aboutus" tag="button">About Us</router-link>
+          <span />
+          <router-link to="/faq" tag="button">FAQs</router-link>
+        </div>
         <!-- wrap this in a button -->
         <button class="loginheader" v-on:click="login">Log in</button>
     </nav>

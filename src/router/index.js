@@ -7,6 +7,7 @@ import TimePreferences from "@/views/TimePreferences.vue";
 import When2Meet from "@/views/When2Meet.vue";
 import YourSocal from "@/views/YourSocal.vue";
 import AboutUs from "@/views/AboutUs.vue";
+import Privacy from "@/views/Privacy.vue";
 
 const routes = [
   {
@@ -48,6 +49,11 @@ const routes = [
     path: "/aboutus",
     name: "AboutUs",
     component: AboutUs
+  }, 
+  {
+    path: "/privacy", 
+    name: "Privacy", 
+    component: Privacy
   }
 ];
 
