@@ -11,7 +11,7 @@
           <button class="dropbtn">Name</button>
           <div class="dropdown-content">
             <!-- @backend pls figure how to log someone out here thank youuu -->
-            <router-link to="/" tag="button">Log out</router-link>
+            <router-link to="/" v-on:click="logout" tag="button">Log out</router-link>
           </div>
         </div>
     </nav>
@@ -20,8 +20,14 @@
 </template>
 
 <script>
+import { logout } from "../../src/firebase/users.js";
 export default {
   name: "Navbar",
+  methods: {
+    logout() {
+      logout()
+    }
+  }
 };
 </script>
 
