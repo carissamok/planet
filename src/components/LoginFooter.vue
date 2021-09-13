@@ -1,47 +1,29 @@
-<!-- overall navbar at the top of every page-->
+<!-- overall footer at the bottom of the login page-->
 <template>
-  <div id="header">
-      <img alt="Planet logo" src="../assets/planetlogo.png" />
-    <nav> 
-        <router-link to="/home" tag="button">Home</router-link>
+  <div id="footer">
+        <i>made by Penn x Northeastern students</i>
         <span />
-        <router-link to="/settings" tag="button">Settings</router-link>
-        <span />
-        <div class="dropdown">
-          <button class="dropbtn">Name</button>
-          <div class="dropdown-content">
-            <!-- @backend pls figure how to log someone out here thank youuu -->
-            <router-link to="/" v-on:click="logout" tag="button">Log out</router-link>
-          </div>
-        </div>
-    </nav>
+        <router-link to="/privacy" tag="button">Privacy Policy</router-link>
   </div>
   <router-view />
 </template>
 
 <script>
-import { logout } from "../../src/firebase/users.js";
 export default {
-  name: "Navbar",
-  methods: {
-    logout() {
-      logout()
-    }
-  }
+  name: "LoginFooter",
 };
 </script>
 
 <style scoped>
 
 * {
-  background-color: #fff;
   box-sizing: border-box;
   /* margin: 0px; */
 }
 
 div {
   margin: 0px;
-  padding: 0px 20px 0px 0px;
+  /* padding: 0px 20px 0px 0px; */
 }
 
 nav {
@@ -74,15 +56,10 @@ img {
   max-height: auto;
 } 
 
-#header {
+#footer {
   display: flex; 
   justify-content: space-between;
-  align-items: center;
-}
-
-ul {
-  display: flex; 
-  justify-content: space-between;
+  padding: 20px 20px 10px 20px;
 }
 
 /* this is just a temp solution!!!!!!! */
@@ -90,7 +67,7 @@ span {
   margin: 10px;
 }
 
-router-link {
+/* router-link {
   display: inline-block;
   padding: 0.35em 1.2em;
   border: 0.1em solid #ffffff;
@@ -110,7 +87,7 @@ router-link {
 router-link:hover {
   color: #f17f99;
   background-color: #fff;
-}
+} */
 
 /*DROPDOWN STYLE */
 
