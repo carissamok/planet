@@ -12,9 +12,9 @@
         </h3>
       </section>
     </header>
-    <section>
+    <!-- <section>
       <button class="login" v-on:click="login">Log in</button>
-    </section>
+    </section> -->
     <section>
       <button class="login" v-on:click="google">Sign up with Google</button>
     </section>
@@ -32,15 +32,18 @@
     <section>
       <button class="login" v-on:click="google">Sign up with Google</button>
     </section>
-    <footer></footer>
+    <footer>
+      <LoginFooter />
+    </footer>
   </div>
 </template>
 
 <script>
 import { googleSignin } from "../../src/firebase/users.js";
 import LoginNavbar from '../components/LoginNavbar.vue';
+import LoginFooter from '../components/LoginFooter.vue';
 import "../../src/router/index.js";
-import * as firebase from "firebase/app";
+import { firebase } from '@firebase/app';
 import "firebase/auth";
 import "firebase/firestore";
 
@@ -58,6 +61,7 @@ export default {
   name: "Login",
   components: { 
     LoginNavbar,
+    LoginFooter,
   },
   methods: {
     login() {
