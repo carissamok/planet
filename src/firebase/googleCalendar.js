@@ -56,10 +56,11 @@ function importGcal(gcalEvents) {
     gcalEvents.forEach(event => {
         const userEmail = firebase.auth().currentUser.email;
         const attendees = []
-        event.attendees.forEach((guest) => {
-            attendees.push(guest.email)
-        })
-        console.log(event)
+        if(event.attendees) {
+            event.attendees.forEach((guest) => {
+                attendees.push(guest.email)
+            })
+        }
         if(event.start && event.end && event.start.dateTime) {
             const gcal = {
                 start: new Date(event.start.dateTime).toLocaleString(),

@@ -54,6 +54,8 @@ export default {
   overflow-x: auto;
   display: flex;
   flex-direction: column;
+  position: relative;
+  left:200px;
 }
 
 .modal-header,
