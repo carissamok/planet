@@ -3,7 +3,7 @@
   <div id="header">
       <img alt="Planet logo" src="../assets/planetlogo.png" />
     <nav> 
-        <router-link to="/onboarding-start" tag="button">onboarding test</router-link>
+        <router-link to="/onboarding-settings" tag="button">onboarding test</router-link>
         <router-link to="/home" tag="button">Home</router-link>
         <span />
         <router-link to="/settings" tag="button">Settings</router-link>
