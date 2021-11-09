@@ -16,9 +16,6 @@
             <!-- hide button until later -->
             <!-- <button class="rsvp" v-on:click="sendRsvp">Send RSVP</button> -->
         </div>
-        <CreateEvent />
-        <EventDetails />
-        <ShareTimes />
     </div>
 </template>
 
@@ -27,18 +24,12 @@
 import SubNavbar from "../components/SubNavbar.vue";
 import Navbar from "../components/Navbar.vue";
 import GenerateTime from "../components/when2meet/GenerateTime.vue";
-import CreateEvent from "../components/modals/CreateEvent.vue";
-import EventDetails from "../components/modals/EventDetails.vue";
-import ShareTimes from "../components/modals/ShareTimes.vue";
 
 export default {
   components: {
     Navbar,
     SubNavbar,
     GenerateTime,
-    CreateEvent,
-    EventDetails,
-    ShareTimes,
   },
   data() {
     return {
@@ -77,6 +68,7 @@ export default {
       this.selectedButton[2] = false;
       this.selectedButton[index] = true;
     },
+    //what is the modal stuff here that's irrelevant that we can delete?
     sendRsvp() {
       // TODO: connect with backend
       console.log("send rsvp pressed");

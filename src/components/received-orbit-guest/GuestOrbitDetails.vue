@@ -1,24 +1,30 @@
 <!DOCTYPE html>
-// meeting details panel to trigger time match functionality
+// align your times panel
 <template>
-    <p> Time match </p>
-    <div class="generate-time">
+    <h3> hey hey ;) </h3>
+    <p> so this is my orbit! it's got all my availabilties so that you can choose whatever works best for you </p>
+    <p> Align your times! </p>
+    <p> are you a user? <button class="loginheader" v-on:click="login">Log in</button></p>
+    
+    <div class="meeting-details">
         <!-- <div class="form-section"> -->
         <input type="text" placeholder="Event name">
-        <!-- </div> -->
-        <!-- <div class="form-section"> -->
-        <label>w/  <input type="text" v-model="invitees"></label>
-        <!-- </div> -->
-        <TimeMatchMeetingDetails />
-    <button class="generate" v-on:click="generate">Generate</button>
+        <input type="text" placeholder="Your email">
+        <!-- <TimeMatchMeetingDetails /> -->
+        <label for="date">date: <input name="date" id="date" /></label>
+        <label for="meeting-time">meeting time: <input type="time" name="meeting-time" id="meeting-time" required/> - <input type="time" name="meeting-time" id="meeting-time" required/></label>
+        <label for="meeting-spot">meeting spot: <input name="meeting-spot" id="meeting-spot" /></label>
+
+        <p> planet will send gcal invites to both buddies! </p>
+    <button class="send" v-on:click="send">Send</button>
     </div>
 </template>
 
 <script>
-import TimeMatchMeetingDetails from "./TimeMatchMeetingDetails";
+import TimeMatchMeetingDetails from "../when2meet/TimeMatchMeetingDetails";
 
 export default {
-    name: "GenerateTime",
+    name: "GuestOrbitDetails",
     components: {
         TimeMatchMeetingDetails
     },
@@ -55,19 +61,23 @@ export default {
 
 <style scoped>
 
-    .generate-time {
+    .meeting-details {
         display: flex;
         flex-direction: column;
         align-items: center;
         /* justify-content: center; */
+        background-color: #e3e7fe;
     }
 
     /* why is this like not rendering --> user agent stylesheet is overriding?? */
     input {
-        margin: 0px 0px 20px;
         border: none;
         border-bottom: 2px #f17f99;
         resize: none;
+    }
+    
+    input[type=text] {
+        margin: 10px 0px 10px;
     }
 
     input[type=text]:focus {
@@ -77,6 +87,7 @@ export default {
     label {
         display: block;
         position: relative;
+        margin: 10px 0px 10px;
         /* color: #c5a8a8 */
     }
 
@@ -93,7 +104,17 @@ export default {
         justify-content: center;
     } */
 
-    button.generate {
+    h3 {
+        color: #555;
+        padding: 0px;
+        margin: 0px;
+    }
+
+     p {
+         margin: 8px;
+     }
+
+    button {
         display: inline-block;
         padding: 0.35em 1.2em;
         border: 0.1em solid #ffffff;
@@ -110,7 +131,7 @@ export default {
         transition: all 0.2s;
     }
 
-    button.generate:hover {
+    button.send:hover {
         border-color: #000000;
     }
 
