@@ -8,6 +8,11 @@ import When2Meet from "@/views/When2Meet.vue";
 import YourSocal from "@/views/YourSocal.vue";
 import AboutUs from "@/views/AboutUs.vue";
 import Privacy from "@/views/Privacy.vue";
+import OnboardingSettings from "@/views/onboarding-views/OnboardingSettings.vue";
+import OnboardingPreferredTimes from "@/views/onboarding-views/OnboardingPreferredTimes.vue";
+import OnboardingDoableTimes from "@/views/onboarding-views/OnboardingDoableTimes.vue";
+import ReceivedOrbitGuest from "@/views/ReceivedOrbitGuest.vue";
+
 
 const routes = [
   {
@@ -54,6 +59,26 @@ const routes = [
     path: "/privacy", 
     name: "Privacy", 
     component: Privacy
+  }, 
+  {
+    path: "/onboarding-settings", 
+    name: "OnboardingSettings", 
+    component: OnboardingSettings
+  }, 
+  {
+    path: "/onboarding-preferred", 
+    name: "OnboardingPreferredTimes", 
+    component: OnboardingPreferredTimes
+  }, 
+  {
+    path: "/onboarding-doable", 
+    name: "OnboardingDoableTimes", 
+    component: OnboardingDoableTimes
+  }, 
+  {
+    path: "/guest", 
+    name: "ReceivedOrbitGuest", 
+    component: ReceivedOrbitGuest
   }
 ];
 

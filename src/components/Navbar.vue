@@ -3,6 +3,10 @@
   <div id="header">
       <img alt="Planet logo" src="../assets/planetlogo.png" />
     <nav> 
+        <router-link to="/guest" tag="button">received orbit - guest</router-link>
+        <span />
+        <router-link to="/onboarding-settings" tag="button">onboarding test</router-link>
+        <span />
         <router-link to="/home" tag="button">Home</router-link>
         <span />
         <router-link to="/settings" tag="button">Settings</router-link>
